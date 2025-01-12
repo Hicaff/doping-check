@@ -1,0 +1,10 @@
+async function checkSubstance() {
+    const substance = document.getElementById("substance").value;
+    const response = await fetch("http://localhost:5000/check-substance", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ substance })
+    });
+    const data = await response.json();
+    document.getElementById("result").innerText = data.message;
+}
